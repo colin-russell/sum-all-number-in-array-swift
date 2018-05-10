@@ -20,7 +20,15 @@ import Foundation
 
 struct Sums {
   func sumItems(_ array: [Any]) -> Int {
-    // Sum all numbers in the array
-    return -1
+    var sum = 0
+    for item in array {
+      if let innerArray = item as? [Any] {
+        sum += sumItems(innerArray)
+      } else {
+        sum += item as! Int
+      }
+    }
+    
+    return sum
   }
 }
